@@ -18,6 +18,7 @@
 <button (click)="onClick($event)"
   (mousemove)="onMouseMove($event)">Click</button>
 
-<app-todo></app-todo>
+<app-todo [todo]="myTodo" (done)="onDone($event)">
+</app-todo>
 
 <router-outlet></router-outlet>

@@ -1,1 +1,4 @@
-<p>todo works!</p>
+<div style="border: 3px solid hotpink">
+    <button (click)="done.emit(todo)">Done</button>
+    {{ todo | json }}
+</div>
