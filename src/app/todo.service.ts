@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Todo } from './todo';
@@ -7,28 +8,25 @@ import { Todo } from './todo';
 })
 export class TodoService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   create(todo: Todo): Observable<Todo> {
-    return of({ name: 'Bügeln', done: false });
+    return this.httpClient.post<Todo>('http://localhost:3000/todos', todo);
   }
 
   get(todoId: number): Observable<Todo> {
-    return of({ name: 'Bügeln', done: false });
+    return this.httpClient.get<Todo>(`http://localhost:3000/todos/${todoId}`);
   }
 
   getAll(): Observable<Todo[]> {
-    return of([
-      { name: 'Bügeln', done: true },
-      { name: 'Auto waschen', done: false }
-    ]);
+    return this.httpClient.get<Todo[]>('http://localhost:3000/todos');
   }
 
   update(todo: Todo): Observable<void> {
-    return of();
+    return this.httpClient.put<void>(`http://localhost:3000/todos/${todo.id}`, todo);
   }
 
   delete(todoId: number): Observable<void> {
-    return of();
+    return this.httpClient.delete<void>(`http://localhost:3000/todos/${todoId}`);
   }
 }
