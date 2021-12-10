@@ -1,3 +1,18 @@
+<app-todo *ngFor="let todo of todos"
+  [todo]="todo" (done)="onDone($event)">
+</app-todo>
+
+<hr>
+
+<button (click)="show = !show">Toggle</button>
+<div *ngIf="show">
+  Hallo! Hier steht interessanter Text.
+</div>
+
+<ul>
+  <li *ngFor="let todo of todos">{{ todo.name }}</li>
+</ul>
+
 <ul>
   <li>{{ 'hallo' }}</li>
   <li>{{ 3 }}</li>

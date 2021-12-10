@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TodoService } from './todo.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,12 @@ export class AppComponent {
   color = 'hotpink';
   numericValue = 4.123456;
   myTodo = { name: "Wash clothes", done: false, id: 3 };
+  show = true;
+  todos = this.todoService.getAll();
+
+  constructor(private todoService: TodoService) {
+    console.log(todoService.getAll());
+  }
 
   onClick(event: MouseEvent) {
     alert(`${event.clientX},${event.clientY}`);
