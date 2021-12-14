@@ -1,5 +1,7 @@
 <button (click)="login()">Login</button>
 <button (click)="requestTodos()">Request Todos</button>
+<input #input>
+<button (click)="addTodo(input.value)">Add Todo</button>
 
 <app-todo *ngFor="let todo of todos"
   [todo]="todo" (done)="onDone($event)">

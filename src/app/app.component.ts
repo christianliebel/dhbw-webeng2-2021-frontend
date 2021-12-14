@@ -20,6 +20,11 @@ export class AppComponent {
     // Hier oben den Code weg
   }
 
+  addTodo(name: string) {
+    this.todoService.create({ name, done: false })
+      .subscribe(() => this.requestTodos());
+  }
+
   login() {
     this.authService.loginWithRedirect();
   }
