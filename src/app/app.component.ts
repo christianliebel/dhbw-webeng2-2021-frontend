@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import { Todo } from './todo';
 import { TodoService } from './todo.service';
 
@@ -15,9 +16,16 @@ export class AppComponent {
   show = true;
   todos: Todo[] = [];
 
-  constructor(private todoService: TodoService) {
-    console.log(todoService.getAll());
-    todoService.getAll()
+  constructor(private todoService: TodoService, private authService: AuthService) {
+    // Hier oben den Code weg
+  }
+
+  login() {
+    this.authService.loginWithRedirect();
+  }
+
+  requestTodos() {
+    this.todoService.getAll()
       .subscribe(todos => this.todos = todos);
   }
 
